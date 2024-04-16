@@ -1,0 +1,43 @@
+html {
+    background: #ffffff;
+  }
+  
+  body {
+    cursor: url('custom-cursor.png'), auto;
+  }
+  .scroll-container,
+  .scroll-area {
+    max-width: 100vw; /* Change max-width to 100vw */
+    max-height: 100vh;
+  }
+  
+  .scroll-container {
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+  }
+  
+  .scroll-container::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .scroll-area {
+    scroll-snap-align: end;
+  }
+  
+  .scroll-container,
+  .scroll-area {
+    margin: 0 auto;
+  }
+  
+  .scroll-area {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+  }
+  
+  .scroll-area:nth-of-type() {
+    background: #ffffff;
+  }
+
+  

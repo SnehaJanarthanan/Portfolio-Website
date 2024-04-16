@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Window Example</title>
+<link rel="stylesheet" href="../CSS/page11.css">
+<style>
+/* Add any additional CSS styles here */
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+button{
+    align-items: center;
+}
+
+.window {
+  width: 500px;
+  margin-bottom: 20px; /* Add margin to the bottom */
+}
+
+.window-for-tab {
+  width: 478px;
+}
+
+/* Allow tabs to expand evenly */
+[role="tab"] {
+  flex-grow: 1;
+  text-align: center;
+}
+
+.button-container {
+  text-align: center;
+}
+
+</style>
+</head>
+<body>
+
+<div class="window">
+  <div class="title-bar">
+    <div class="title-bar-text">Connect With Me!</div>
+    <div class="title-bar-controls">
+      <button aria-label="Minimize">&#x2212;</button>
+      <button aria-label="Maximize">&#x2610;</button>
+      <button aria-label="Close">&#x2716;</button>
+    </div>
+  </div>
+  <div class="window-body">
+    <menu role="tablist">
+      <li role="tab" aria-selected="true"><a href="#tab1">My Resume</a></li>
+      <li role="tab"><a href="#tab2">Email</a></li>
+      <li role="tab"><a href="#tab3">Github</a></li>
+      <li role="tab"><a href="#tab4">LinkedIn</a></li>
+      <li role="tab"><a href="#tab5">Leetcode</a></li>
+
+    </menu>
+    <div id="tab1" class="window-for-tab" role="tabpanel">
+      <div class="window-body">
+        <p>Want my resume?</p>
+        <button id="resumeButton">Click Here</button>
+    </div>
+    
+    <script>
+      document.getElementById("resumeButton").addEventListener("click", function() {
+          window.open("http://bit.ly/3Uggt5F", "_blank");
+      });
+  </script>
+    
+    </div>
+    <div id="tab2" class="window-for-tab" role="tabpanel">
+      <div class="window-body">
+        <p>Get in contact with me here! <br><b>snehajanarthanan@gmail.com</b></p>
+        <button onclick="sendEmail()">Email Me</button>
+
+
+      </div>
+    </div>
+    <script>
+      function sendEmail() {
+          window.location.href = "mailto:snehajanarthanan@gmail.com";
+      }
+  </script>
+  <div id="tab3" class="window-for-tab" role="tabpanel">
+    <div class="window-body">
+      <p>Look at my projects on Github here!</p>
+      <button id="github button">Click me</button>
+
+    </div>
+  </div>
+  <script>
+    document.getElementById("linkedin button").addEventListener("click", function() {
+        window.open("https://github.com/SnehaJanarthanan", "_blank");
+    });
+</script>
+    <div id="tab4" class="window-for-tab" role="tabpanel">
+      <div class="window-body">
+        <p>My Linkedin is here!</p>
+        <button id="linkedin button">Click me</button>
+
+      </div>
+    </div>
+    <script>
+      document.getElementById("linkedin button").addEventListener("click", function() {
+          window.open("https://www.linkedin.com/in/sneha-janarthanan-712a58267/", "_blank");
+      });
+  </script>
+    <div id="tab5" class="window-for-tab" role="tabpanel">
+      <div class="window-body">
+        <p>My Leetcode profile is here!</p>
+        <button id="leetcode button">Click me</button>
+
+      </div>
+    </div>
+    <script>
+      document.getElementById("leetcode button").addEventListener("click", function() {
+          window.open("https://leetcode.com/sneha_janarthanan/", "_blank");
+      });
+  </script>
+
+
+  </div>
+</div>
+
+<div class="button-container">
+</div>
+
+<script>
+// JavaScript code to handle tab clicks and show/hide tab content
+const tabs = document.querySelectorAll('[role="tab"]');
+const tabPanels = document.querySelectorAll('[role="tabpanel"]');
+
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    // Remove the aria-selected attribute from all tabs
+    tabs.forEach(t => t.setAttribute('aria-selected', 'false'));
+    // Hide all tab panels
+    tabPanels.forEach(panel => panel.style.display = 'none');
+
+    // Set aria-selected attribute to true for the clicked tab
+    tab.setAttribute('aria-selected', 'true');
+
+    // Get the corresponding tab panel ID from the href attribute
+    const tabPanelId = tab.firstElementChild.getAttribute('href').slice(1);
+    // Show the corresponding tab panel
+    document.getElementById(tabPanelId).style.display = 'block';
+  });
+});
+
+// Hide all tab panels except for the initially selected one
+tabPanels.forEach(panel => {
+  if (panel.id !== 'tab1') {
+    panel.style.display = 'none';
+  }
+});
+</script>
+
+</body>
+</html>

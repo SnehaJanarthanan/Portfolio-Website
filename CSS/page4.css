@@ -1,0 +1,87 @@
+@import 'https://fonts.googleapis.com/css?family=Roboto+Mono:100';
+
+html, body {
+  font-family: 'Roboto Mono', monospace;
+  background: #ffffff;
+  height: 100%;
+}
+
+.container {
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.text {
+  font-weight: bold;
+  font-size: 22px;
+  color: #000000;
+  text-shadow: 0.05em 0 0 magenta, -0.05em 0 0 cyan; /* Two-toned magenta and cyan outline */
+
+}
+
+.dud {
+  color: #000000;
+}
+
+@keyframes glitch {
+  1%{
+    transform: rotateX(10deg) skewX(90deg);
+  }
+  2%{
+    transform: rotateX(0deg) skewX(0deg);
+  }
+  /* Additional styles for glitch effect */
+  .glitch {
+    color: rgb(223, 191, 191);
+    position: relative;
+    font-size: 9vw;
+    animation: glitch 5s 5s infinite;
+  }
+
+  .glitch::before {
+    content: attr(data-text);
+    position: absolute;
+    left: -2px;
+    text-shadow: -5px 0 magenta;
+    background: black;
+    overflow: hidden;
+    top: 0;
+    animation: noise-1 3s linear infinite alternate-reverse, glitch 5s 5.05s infinite;
+  }
+
+  .glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    left: 2px;
+    text-shadow: -5px 0 lightgreen;
+    background: black;
+    overflow: hidden;
+    top: 0;
+    animation: noise-2 3s linear infinite alternate-reverse, glitch 5s 5s infinite;
+  }
+
+  @keyframes noise-1 {
+    $steps: 30;
+    @for $i from 1 through $steps {
+      #{percentage($i*(1/$steps))} {
+        $top: random(100);
+        $bottom: random(101 - $top);
+        clip-path: inset(#{$top}px 0 #{$bottom}px 0);
+      }
+    }
+  }
+
+  @keyframes noise-2 {
+    $steps: 30;
+    @for $i from 0 through $steps {
+      #{percentage($i*(1/$steps))} {
+        $top: random(100);
+        $bottom: random(101 - $top);
+        clip-path: inset(#{$top}px 0 #{$bottom}px 0);
+      }
+    }
+  }
+}

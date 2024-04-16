@@ -1,0 +1,111 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Open Sans", sans-serif;
+  box-sizing: border-box;
+}
+
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+}
+
+.about-section {
+  background-color: white;
+  overflow: hidden;
+  padding: 3px 0; 
+  text-align: center;
+}
+
+.inner-container {
+  width: 80vw;
+  margin: 0 auto;
+  background-color: rgb(255, 249, 249);
+  padding: 30px;
+  position: relative;
+  border: 5px solid #808080; /* Add a black border */
+}
+
+h1{
+  color: #808080;
+  font-size: 24px;
+  text-shadow: 0.05em 0 0 magenta, -0.05em 0 0 cyan; /* Two-toned magenta and cyan outline */
+
+}
+
+p {
+  font-size: 16px;
+}
+
+/* Adjusted styles for the scan lines animation */
+.inner-container::before {
+  content: "";
+  position: absolute;
+  top: -17px; /* Adjusted to accommodate the border */
+  left: -17px; /* Adjusted to accommodate the border */
+  width: calc(100% + 34px); /* Adjusted to accommodate the border */
+  height: calc(100% + 34px); /* Adjusted to accommodate the border */
+  /* background-image: repeating-linear-gradient(
+    to bottom, 
+    transparent, 
+    transparent 0.5px, 
+    rgba(44, 37, 37, 0.2) 1px,
+    rgba(44, 37, 37, 0.2) 2px,
+    rgba(255, 0, 255, 0.2) 2px,
+    rgba(255, 0, 255, 0.2) 3px,
+    transparent 3px,
+    rgba(0, 255, 255, 0.2) 3px,
+    rgba(0, 255, 255, 0.2) 4px,
+    transparent 4px,
+    rgba(255, 255, 0, 0.2) 4px,
+    rgba(255, 255, 0, 0.2) 5px
+  );
+  animation: tvScanLines 0.1s linear infinite; */
+}
+
+/* Adjusted position for the text to accommodate the border */
+.text {
+  border: 2px solid #808080;
+  padding: 20px;
+  height: calc(100% - 74px); /* Adjusted to accommodate the border */
+  overflow: auto;
+}
+
+
+
+
+@keyframes tvScanLines {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 100%;
+  }
+}
+
+
+
+.inner-container {
+  max-width: 100%;
+  padding: 10px;
+}
+
+.text {
+  border: 2px solid #808080; /* TV screen border */
+  padding: 20px;
+  height: calc(100% - 64px); /* Adjust height based on TV frame and padding */
+  overflow: auto; /* Enable scrolling if content overflows */
+}
+
+
+.left {
+  left: 20px; /* Adjust position as needed */
+}
+
+.right {
+  right: 40px; /* Adjust position as needed */
+}

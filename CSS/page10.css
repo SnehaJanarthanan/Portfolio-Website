@@ -1,0 +1,209 @@
+:root {
+  --bg-selected: rgba(0,0,0,0.03);
+  --bt-text: #3F1D35;
+  --bt-text-selected: #717171;
+ 
+  --bt-focus: rgba(0,0,0,0.06);
+  --text: #454746;
+  --border-color: grey;
+
+  font-size: 40.5%;
+  box-sizing: border-box;
+}
+
+button::before {
+  color: magenta; /* Text shadow color */
+  z-index: -2;
+}
+
+button::after {
+  color: cyan; /* Text shadow color */
+  z-index: -3;
+}
+
+/* Global */
+html {
+  min-height: 70vh; /* Adjusted height of the viewport */
+  /* vendor prefixes for box-sizing */
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+
+  /* for gradient backgounds */
+  min-height: 100%;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+*, *:before, *:after {
+  -webkit-box-sizing: inherit;
+  -moz-box-sizing: inherit;
+  box-sizing: inherit;
+}
+
+body {
+  font-family: sans-serif;
+  font-size: 1.8rem;
+  line-height: 1.6;
+  background: #ffffff;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+}
+
+.wrapper {
+  max-width: 1000px;
+  margin: 4rem auto;
+  padding: 2rem;
+  height: 70vh; /* Adjusted height of the viewport */
+}
+
+.tabs {
+  display: grid;
+  position: relative;
+}
+
+[role="tablist"] {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+[role="tabpanel"] {
+  background: var(--bg-selected);
+  padding: 2rem;
+  min-height: calc(50vh - 8rem); /* Adjusted height of the tab panel */
+  color: var(--text);
+  border-right: 2px solid var(--border-color);
+  border-left: 2px solid var(--border-color);
+  border-bottom: 2px solid var(--border-color);
+  /* background-image: repeating-linear-gradient(
+      to bottom, 
+      transparent, 
+      transparent 0.5px, 
+      rgba(44, 37, 37, 0.2) 1px,
+      rgba(44, 37, 37, 0.2) 2px,
+      rgba(255, 0, 255, 0.2) 2px,
+      rgba(255, 0, 255, 0.2) 3px,
+      transparent 3px,
+      rgba(0, 255, 255, 0.2) 3px,
+      rgba(0, 255, 255, 0.2) 4px,
+      transparent 4px,
+      rgba(255, 255, 0, 0.2) 4px,
+      rgba(255, 255, 0, 0.2) 5px
+    );
+  border-radius: 0; Make border square */
+}
+
+button {
+  font-family: sans-serif;
+  font-weight: 600;
+  font-size: 2rem;
+  letter-spacing: 0.9rem;
+  padding: 1rem;
+  background: transparent;
+  color: var(--bt-text);
+  border: 0;
+  border-bottom: 2px solid var(--border-color);
+  cursor: pointer;
+  margin: 0;
+}
+
+button[aria-selected="true"] {
+  background: var(--bg-selected);
+  color: var(--bt-text-selected);
+  border-top: 2px solid var(--border-color);
+  border-left: 2px solid var(--border-color);
+  border-right: 2px solid var(--border-color);
+  border-bottom: 0;
+  outline: 0;
+  text-shadow: 1px 1px 2px magenta, -1px -1px 2px cyan;
+}
+
+button[aria-selected="false"]:hover {
+  font-size: 2.1rem;
+}
+
+/* replace the dotted outline for tab users with a semi-transparent background */
+button:focus {
+  outline: 0;
+  background: var(--bt-focus);
+  /* background-image: repeating-linear-gradient(
+      to bottom, 
+      transparent, 
+      transparent 0.5px, 
+      rgba(44, 37, 37, 0.2) 1px,
+      rgba(44, 37, 37, 0.2) 2px,
+      rgba(255, 0, 255, 0.2) 2px,
+      rgba(255, 0, 255, 0.2) 3px,
+      transparent 3px,
+      rgba(0, 255, 255, 0.2) 3px,
+      rgba(0, 255, 255, 0.2) 4px,
+      transparent 4px,
+      rgba(255, 255, 0, 0.2) 4px,
+      rgba(255, 255, 0, 0.2) 5px
+    ); */
+}
+
+button::-moz-focus-inner {
+  border:0;
+  background: var(--bt-focus);
+}
+
+/* Media queries */
+@media (max-width: 660px) {
+  .wrapper {
+    margin: 4rem auto;
+    padding: 1rem;
+  }
+
+  button {
+    border: 0;
+    border-radius: 0; /* Make border square */
+  }
+
+  button[aria-selected="true"] {
+    border: 2px solid var(--border-color);
+    /* background-image: repeating-linear-gradient(
+      to bottom, 
+      transparent, 
+      transparent 0.5px, 
+      rgba(44, 37, 37, 0.2) 1px,
+      rgba(44, 37, 37, 0.2) 2px,
+      rgba(255, 0, 255, 0.2) 2px,
+      rgba(255, 0, 255, 0.2) 3px,
+      transparent 3px,
+      rgba(0, 255, 255, 0.2) 3px,
+      rgba(0, 255, 255, 0.2) 4px,
+      transparent 4px,
+      rgba(255, 255, 0, 0.2) 4px,
+      rgba(255, 255, 0, 0.2) 5px
+    ); */
+  }
+
+  [role="tablist"] {
+    grid-template-columns: repeat(1, minmax(200px, 1fr));
+  }
+
+  [role="tabpanel"] {
+    margin-top: 10px;
+    border: 2px solid var(--border-color);
+    /* background-image: repeating-linear-gradient(
+    to bottom, 
+    transparent, 
+    transparent 0.5px, 
+    rgba(44, 37, 37, 0.2) 1px,
+    rgba(44, 37, 37, 0.2) 2px,
+    rgba(255, 0, 255, 0.2) 2px,
+    rgba(255, 0, 255, 0.2) 3px,
+    transparent 3px,
+    rgba(0, 255, 255, 0.2) 3px,
+    rgba(0, 255, 255, 0.2) 4px,
+    transparent 4px,
+    rgba(255, 255, 0, 0.2) 4px,
+    rgba(255, 255, 0, 0.2) 5px
+  ); */
+
+  }
+}

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Animated Card Stacks</title>
+<link rel="stylesheet" href="..\CSS\page10.css">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="tabs">
+            <div role="tablist" aria-label="FAQ">
+                <button role="tab" aria-selected="true" id="what" data-content="What?">TECHSTACK</button>
+                <button role="tab" aria-selected="false" id="when" data-content="When?">ACHIEVEMENTS</button>
+                <button role="tab" aria-selected="false" id="how" data-content="How?">MEDIA MENTIONS</button>
+            </div>
+            <div role="tabpanel" aria-labelledby="what">
+                <ul>
+                    <li><b>Competitive Programming</b></li>
+                    <ul>
+                        <li>Java</li>
+                    </ul>
+                    <li><b>Backend Languages</b>
+                        <ul>
+                            <li>Java</li>
+                            <li>Python</li>
+                        </ul>
+                    </li>
+                    <li> <b>Databases</b>
+                        <ul>
+                            <li>MongoDB</li>
+                            <li>Firestore</li>
+                            <li>MySQL/Oracle</li>
+                            <li>PostgreSQL</li>
+                        </ul>
+                    </li>
+                    <li> <b>Frontend</b>
+                        <ul>
+                            <li>React</li>
+                            <li>Tailwind CSS</li>
+                            <li>HTML/CSS/JS</li>
+                        </ul>
+                    </li>
+                    <li> <b>Mobile Development</b>
+                        <ul>
+                            <li>Android Studio</li>
+                            
+                        </ul>
+                    </li>
+
+                
+                </ul>
+            </div>
+            <div role="tabpanel" aria-labelledby="when" hidden>
+                <ul><li>Led teams to secure 1st place in over 10+ National-level hackathons</li></ul>
+                <ul>
+                    <li>Gained leadership skills being:</li>
+                    <ul>
+                        <li>The Secretary of Science and Humanities Department.</li>
+                        <li>The Representative of the Computer Science Department.</li>
+                    </ul>
+                </ul>
+                <ul>
+                    <li>Nationally recognized public speaker:</li>
+                    <ul>
+                    <li>The Secretary of Science and  Humanities Department.</li>
+                    <li>The Representative of the Computer Science Department.  </li>
+                    </ul>
+                </ul>
+
+            </div>
+            
+            <div role="tabpanel" aria-labelledby="how" hidden>
+
+                <ul>
+                    <li>
+                        <p id="link2">On the news regarding our Ambassadorship of Youth Affairs and Sports. (There I am at the end!)<span id="link2"></span>.</p>
+                    </li>
+                    <li>
+                        <p id="link3">News Mention about our work as a G20 young ambassador. I'm in the second clip!<span id="link3"></span>.</p>
+                    </li>
+                    <li>
+                        <p id="vit_news">News article on winning the police hackathon. Click to visit <span id="link"></span>.</p>
+                    </li>
+                    <li>
+                        <p id="link4">Website mention for winning the Smart India Hackathon 23'. Click to visit.<span id="link4"></span>.</p>
+                    </li>
+                </ul>
+            
+                <script>
+                    function convertParagraphToLink(paragraphId, linkId, url) {
+                        var paragraph = document.getElementById(paragraphId);
+                        var link = document.createElement("a");
+                        link.href = url;
+                        link.target = "_blank"; // Open link in a new tab
+                        link.textContent = paragraph.textContent;
+                        paragraph.textContent = '';
+                        paragraph.appendChild(link);
+                    }
+            
+                    // Call the function with desired parameters
+                    convertParagraphToLink('vit_news', 'link', 'https://imgur.com/a/aihr3AB');
+                    convertParagraphToLink('link2', 'link2', 'https://www.instagram.com/reel/Cy5aWtWtVuT/?igsh=eTgyNGZqbjFnem1h');
+                    convertParagraphToLink('link3', 'link3', 'https://youtu.be/c4FSpmULJ_s?si=uDvVflFWmO6dC5M3');
+                    convertParagraphToLink('link4', 'link4', 'https://imgur.com/a/rZ8IcOa');
+                </script>
+            
+            </div>
+            
+        </div>
+    </div>    
+<script src="..\JS\page10.js"></script>
+</body>
+</html>
